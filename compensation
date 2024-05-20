@@ -1,0 +1,24 @@
+def calculate_compensation(income, standard_deduction, disability_deduction):
+    # Calculate taxable income
+    taxable_income = max(income - standard_deduction - disability_deduction, 0)
+
+    # Assuming a flat tax rate of 10% for simplicity
+    tax_rate = 0.10
+    tax = taxable_income * tax_rate
+
+    # Calculate net income after tax
+    net_income = income - tax
+
+    # Calculate compensation (assuming it's based on the tax saved from deductions)
+    compensation = (standard_deduction + disability_deduction) * tax_rate
+
+    return net_income, compensation
+
+# Example usage
+income = 30000  # annual income in dollars
+standard_deduction = 12000  # standard deduction amount
+disability_deduction = 8000  # additional deduction for being a disabled person of group 1
+
+net_income, compensation = calculate_compensation(income, standard_deduction, disability_deduction)
+print(f"Net Income: ${net_income:.2f}")
+print(f"Compensation: ${compensation:.2f}")
